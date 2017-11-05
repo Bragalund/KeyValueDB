@@ -1,1 +1,0 @@
-/usr/bin/cc -g   CMakeFiles/EksamensInnlevering.dir/main.c.o  -o EksamensInnlevering 
