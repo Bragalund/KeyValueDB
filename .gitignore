@@ -52,7 +52,7 @@ Mkfile.old
 dkms.conf
 
 # Documentation
-/Dokumentasjon
+Dokumentasjon
 
 # IntelliJ
 .idea
@@ -60,3 +60,5 @@ dkms.conf
 # CMake
 CMakeLists.txt
 cmake-build-debug
+
+# executable
