@@ -3,5 +3,5 @@ project(EksamensInnlevering)
 
 set(CMAKE_C_STANDARD 11)
 
-set(SOURCE_FILES main.c main.h)
+set(SOURCE_FILES main.c headerfiles/main.h)
 add_executable(EksamensInnlevering ${SOURCE_FILES})

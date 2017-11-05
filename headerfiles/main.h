@@ -1,9 +1,7 @@
-//
-// Created by bragalund on 05.11.17.
-//
-
 #ifndef EKSAMENSINNLEVERING_MAIN_H
+
 #define EKSAMENSINNLEVERING_MAIN_H
+#define MAX_NODES 10
 
 #include <stdio.h>
 
