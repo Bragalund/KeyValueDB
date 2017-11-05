@@ -53,3 +53,6 @@ dkms.conf
 
 # Documentation
 /Dokumentasjon
+
+# IntelliJ
+.idea
