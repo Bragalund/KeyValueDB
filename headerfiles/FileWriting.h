@@ -3,7 +3,8 @@
 
 #include "KeyValueDB.h"
 
-bool testIfFileExists(char* filename);
 FILE* openOrCreateFile(char *filename);
+void closeFile(FILE* file);
+bool testIfFileExists(char *filename);
 
 #endif //EKSAMENSINNLEVERING_FILEWRITER_H

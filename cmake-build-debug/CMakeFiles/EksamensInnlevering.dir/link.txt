@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.o CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileReading.c.o CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileWriting.c.o CMakeFiles/EksamensInnlevering.dir/sourcefiles/Validation.c.o  -o EksamensInnlevering 

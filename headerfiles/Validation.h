@@ -1,0 +1,13 @@
+//
+// Created by bragalund on 06.11.17.
+//
+
+#ifndef EKSAMENSINNLEVERING_VALIDATION_H
+#define EKSAMENSINNLEVERING_VALIDATION_H
+
+
+#include "KeyValueDB.h"
+
+
+
+#endif //EKSAMENSINNLEVERING_VALIDATION_H

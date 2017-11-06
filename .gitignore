@@ -55,11 +55,11 @@ dkms.conf
 Dokumentasjon
 
 # IntelliJ
-.idea
+#.idea
 
 # CMake
-CMakeLists.txt
-cmake-build-debug
+#CMakeLists.txt
+#cmake-build-debug
 
 # executable
-KeyValueDB
+#KeyValueDB
