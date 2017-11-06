@@ -62,3 +62,4 @@ CMakeLists.txt
 cmake-build-debug
 
 # executable
+KeyValueDB
