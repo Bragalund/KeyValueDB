@@ -1,26 +1,22 @@
 #include "../headerfiles/FileWriting.h"
-#include "../headerfiles/Validation.h"
 
 
-FILE* openOrCreateFile(char *filename) {
-    FILE *fp;
-
-    if (testIfFileExists(filename)) {
-        fp = fopen(filename, "r+");
-    } else {
-        fp = fopen(filename, "w+");
-    }
-    return fp;
-}
-
-bool testIfFileExists(char *filename) {
+FILE* openFile(char *filename) {
+    bool fileExists;
+    FILE* file;
     if (access(filename, F_OK) != -1) {
-        return true;
+        fileExists = true;
     }
-    return false;
+    else{
+        fileExists=false;
+    }
+    if (fileExists) {
+        file = fopen(filename, "r+");
+    } else {
+        printf("File does not exist.\n");
+        exit(1);
+    }
+    return file;
 }
 
-void closeFile(FILE* file){
-    fclose(file);
-}
 

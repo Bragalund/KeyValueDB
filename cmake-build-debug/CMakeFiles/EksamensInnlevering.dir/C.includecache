@@ -9,10 +9,6 @@
 /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/KeyValueDB.c
 headerfiles/KeyValueDB.h
 /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/headerfiles/KeyValueDB.h
-headerfiles/FileReading.h
-/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/headerfiles/FileReading.h
-headerfiles/FileWriting.h
-/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/headerfiles/FileWriting.h
 
 /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/headerfiles/FileReading.h
 KeyValueDB.h
@@ -47,8 +43,6 @@ stdlib.h
 /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/sourcefiles/FileWriting.c
 ../headerfiles/FileWriting.h
 /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/headerfiles/FileWriting.h
-../headerfiles/Validation.h
-/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/headerfiles/Validation.h
 
 /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/sourcefiles/Validation.c
 ../headerfiles/Validation.h

@@ -1,32 +1,52 @@
 #include "headerfiles/KeyValueDB.h"
-#include "headerfiles/FileReading.h"
-#include "headerfiles/FileWriting.h"
+
+typedef struct NODE {
+    char *pszName; //Peker til navn på denne noden
+    unsigned long ulIntVal; //unsigned long, som holde null eller en numerisk verdi
+    char *pszString;
+    struct _NODE *pNextNode;
+    struct _NODE *pDownNodes;
+} NODE;
+
+struct NODE* createNode(char *pszName, unsigned long ulIntVal, char *pszString);
 
 int main() {
 
-    typedef struct _NODE {
-        char *pszName; //Peker til navn på denne noden
-        unsigned long ulIntVal; //unsigned long, som holde null eller en numerisk verdi
-        char *pszString;
-        struct _NODE *pnNodes[MAX_NODES];
-    } NODE;
+    struct NODE* head;
 
     char *someName;
     someName = "Henrik";
-    struct _NODE someNode;
-    someNode.pszName = someName;
+    NODE* someNode = createNode(someName, NULL, "Henriks data string");
+    head = someNode;
 
-    printf("%s \n", someNode.pszName);
-    char **allLinesInFile;
+    char *someOtherName;
+    someOtherName = "Knut";
+    struct NODE* someOtherNode;
+    someOtherNode = createNode(someOtherName, NULL, "Knut sin data string.");
 
-    FILE *file = openOrCreateFile("DB.txt");
-    allLinesInFile = getAllLinesInFile(file);
+    head->pNextNode = someOtherNode;
 
-    int amountOfLines = sizeof(allLinesInFile)/sizeof(char);
-    printf("amountOfLines %i",amountOfLines);
+    printf("%s \n", head->pszName);
 
-    free(allLinesInFile);
-    free(file);
-    closeFile(file);
+    head = head->pNextNode;
+
+    printf("%s", head->pszName);
+
+    free(someNode);
+    free(someOtherNode);
     return 0;
+}
+
+struct NODE* createNode(char *pszName, unsigned long ulIntVal, char *pszString) {
+    struct NODE *pNewNode =(struct NODE*) malloc(sizeof(struct NODE));
+    pNewNode->pszName = pszName;
+    if (pszString != NULL) {
+        pNewNode->pszString = pszString;
+    } else {
+        pNewNode->ulIntVal = ulIntVal;
+    }
+    pNewNode->pDownNodes = NULL;
+    pNewNode->pNextNode = NULL;
+
+    return pNewNode;
 }

@@ -3,8 +3,6 @@
 
 CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.o
  /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/KeyValueDB.c
- /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/headerfiles/FileReading.h
- /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/headerfiles/FileWriting.h
  /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/headerfiles/KeyValueDB.h
 CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileReading.c.o
  /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/headerfiles/FileReading.h
@@ -13,7 +11,6 @@ CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileReading.c.o
 CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileWriting.c.o
  /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/headerfiles/FileWriting.h
  /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/headerfiles/KeyValueDB.h
- /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/headerfiles/Validation.h
  /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/sourcefiles/FileWriting.c
 CMakeFiles/EksamensInnlevering.dir/sourcefiles/Validation.c.o
  /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/headerfiles/KeyValueDB.h

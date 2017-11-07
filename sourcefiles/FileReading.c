@@ -37,8 +37,8 @@ char *getLine(FILE *file, long *lineNumber) {
 
 
 long getSizeOfFileBySeek(FILE *fr, long sizeToBeRemoved) {
-    fseek(fr, 0, SEEK_END);                     // Søk til slutten av filen
-    long size = ftell(fr) - sizeToBeRemoved;     // Få filpekerens verdi og fjern ønsket mengde
-    fseek(fr, 0, SEEK_SET);                     // Søk tilbake til starten av filen
+    fseek(fr, 0, SEEK_END);
+    long size = ftell(fr);
+    fseek(fr, 0, SEEK_SET);
     return size;
 }
