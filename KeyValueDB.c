@@ -14,26 +14,38 @@ int main() {
 
     struct NODE* head;
 
-    char *someName;
-    someName = "Henrik";
-    NODE* someNode = createNode(someName, NULL, "Henriks data string");
-    head = someNode;
 
-    char *someOtherName;
-    someOtherName = "Knut";
-    struct NODE* someOtherNode;
-    someOtherNode = createNode(someOtherName, NULL, "Knut sin data string.");
+    NODE* rootNode = createNode("Root node", NULL, "Henriks data string");
+    head = rootNode;
 
-    head->pNextNode = someOtherNode;
+    struct NODE* knutNode;
+    knutNode = createNode("Knut", NULL, "Knut sin data string.");
+
+    struct NODE* henrikNode;
+    henrikNode = createNode("Henrik", NULL, "Henrik sin down node");
+
+    head->pNextNode = knutNode;
+    head->pDownNodes = henrikNode;
 
     printf("%s \n", head->pszName);
 
     head = head->pNextNode;
 
-    printf("%s", head->pszName);
+    printf("%s \n", head->pszName);
 
-    free(someNode);
-    free(someOtherNode);
+    head = rootNode;
+
+    printf("%s \n", head->pszName);
+
+    head = head->pDownNodes;
+
+    printf("%s \n", head->pszName);
+
+
+
+    free(henrikNode);
+    free(rootNode);
+    free(knutNode);
     return 0;
 }
 
