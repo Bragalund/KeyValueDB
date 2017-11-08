@@ -9,8 +9,9 @@ typedef struct NODE {
     struct _NODE *pDownNodes;
 } NODE;
 
-char** parsePathToNode(char* path,const char a_delim);
-NODE *lookupNode(char **allPaths, char *nodeName, NODE* rootNode);
+char **parsePathToNode(char *path, const char a_delim);
+
+NODE *lookupNode(char **allPaths, char *nodeName, NODE *rootNode);
 
 struct NODE *createNode(char *pszName, unsigned long ulIntVal, char *pszString);
 
@@ -42,6 +43,11 @@ int main() {
     allPaths[10] = "config.update.timeout = 20";
     allPaths[11] = NULL;
 
+    char **tempAllPaths = malloc(4 * 256 * sizeof(char));
+    tempAllPaths[0] = "Root.Knut = \"Ok\"\n";
+    tempAllPaths[1] = "Root.Henrik = \"Cancel\"\n";
+    tempAllPaths[2] = "Root.Henrik.Fredrik = \"Update your software\"\n";
+
     int countOfNodes = 0;
     struct NODE *head;
 
@@ -49,17 +55,16 @@ int main() {
     countOfNodes++;
     head = rootNode;
 
-
     struct NODE *knutNode;
-    knutNode = createNode("Knut", NULL, "Knut sin data string.");
+    knutNode = createNode("Knut", NULL, "OK");
     countOfNodes++;
 
     struct NODE *henrikNode;
-    henrikNode = createNode("Henrik", NULL, "Henrik sin down node");
+    henrikNode = createNode("Henrik", NULL, "Cancel");
     countOfNodes++;
 
     struct NODE *fredrikNode;
-    fredrikNode = createNode("Fredrik", NULL, "Fredrik sin down down node");
+    fredrikNode = createNode("Fredrik", NULL, "Update your software");
     countOfNodes++;
 
     NODE **allNodes = malloc(20 * sizeof(NODE));
@@ -79,8 +84,12 @@ int main() {
     printf("%s \n", head->pszName);
     head->pDownNodes = fredrikNode;
 
-
-    lookupNode(allPaths, "header", rootNode);
+    NODE* someNode = lookupNode(tempAllPaths, "Fredrik", rootNode);
+    if(someNode != NULL){
+        printf("Minneadressen til noden er: %s", &someNode);
+    }else{
+        printf("Noden finnes ikke.");
+    }
 
     for (int i = 0; i < countOfNodes; i++) {
         free(allNodes[i]);
@@ -104,23 +113,70 @@ struct NODE *createNode(char *pszName, unsigned long ulIntVal, char *pszString) 
     return pNewNode;
 }
 
-NODE *lookupNode(char **allPaths, char *nodeName, NODE* rootNode) {
+NODE *lookupNode(char **allPaths, char *nodeName, NODE *rootNode) {
+    char **parsedPath;
+    NODE *head = malloc(sizeof(NODE));
+    head = rootNode;
+    NODE *temp = rootNode;
+    int k = 0;
 
-    NODE* temp = rootNode;
-    int k=0;
-    while(allPaths[k] != NULL){
-        if(strstr(allPaths[k], nodeName) != NULL){
-            char* path=allPaths[k];
-            printf("%s \n", path);
+    while (allPaths[k] != NULL) {
+        if (strstr(allPaths[k], nodeName) != NULL) {
+            char *path = allPaths[k];
+            printf("%s", path);
+
+            parsedPath = parsePathToNode(path, '.');
+            int m = 0;
+            while (parsedPath[m] != NULL) {
+                printf("%s \n", parsedPath[m]);
+                printf("Navn på head-node: %s \n", head->pszName);
+                if(strcmp(head->pDownNodes, allPaths[m]) != 0){
+                    head = head->pDownNodes;
+                }else if(strcmp(head->pNextNode, allPaths[m]) != 0){
+                    head = head->pNextNode;
+                }
+                m++;
+            }
+
+
         }
         k++;
     }
-
-
-    return NULL;
+    return head;
 }
 
-char** parsePathToNode(char* path,const char delimiter){
+char **parsePathToNode(char *path, const char delimiter) {
+    char **result = 0;
+    size_t count = 0;
+    char *tmp = path;
+    char *last_punctuation = 0;
+    char delim[2];
+    delim[0] = delimiter;
+    delim[1] = 0;
 
-    return NULL;
+    while (*tmp) {
+        if (delimiter == *tmp) {
+            count++;
+            last_punctuation = tmp;
+        }
+        tmp++;
+    }
+    count += last_punctuation < (path + strlen(path) - 1);
+    count++;
+    result = malloc(sizeof(char *) * count);
+    char tempPath[256];
+    strcpy(tempPath, path);
+    if (result) {
+        size_t idx = 0;
+        char *token = strtok(tempPath, delim);
+
+        while (token) {
+            assert(idx < count);
+            *(result + idx++) = strdup(token);
+            token = strtok(0, delim);
+        }
+        assert(idx == count - 1);
+        *(result + idx) = 0;
+    }
+    return result;
 }
