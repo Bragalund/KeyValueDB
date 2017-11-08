@@ -11,6 +11,10 @@ typedef struct NODE {
 
 char **parsePathToNode(char *path, const char a_delim);
 
+bool addToNodeDown(NODE *pointNode, NODE *newNode);
+
+bool addToNodeNext(NODE *pointNode, NODE *newNode);
+
 NODE *lookupNode(char **allPaths, char *nodeName, NODE *rootNode);
 
 struct NODE *createNode(char *pszName, unsigned long ulIntVal, char *pszString);
@@ -44,14 +48,14 @@ int main() {
     allPaths[11] = NULL;
 
     char **tempAllPaths = malloc(4 * 256 * sizeof(char));
-    tempAllPaths[0] = "Root.Knut = \"Ok\"\n";
-    tempAllPaths[1] = "Root.Henrik = \"Cancel\"\n";
-    tempAllPaths[2] = "Root.Henrik.Fredrik = \"Update your software\"\n";
+    tempAllPaths[0] = "Root.Knut  = \"Ok\"\n";
+    tempAllPaths[1] = "Root.Henrik = \"Update your software\"\n";
+    tempAllPaths[2] = "Root.Henrik.Fredrik = \"Oppdater programvaren\"\n";
 
     int countOfNodes = 0;
     struct NODE *head;
 
-    NODE *rootNode = createNode("Root", NULL, "Henriks data string");
+    NODE *rootNode = createNode("Root", NULL, NULL);
     countOfNodes++;
     head = rootNode;
 
@@ -73,27 +77,21 @@ int main() {
     allNodes[2] = henrikNode;
     allNodes[3] = fredrikNode;
 
-    head->pNextNode = knutNode;
-    head->pDownNodes = henrikNode;
-    printf("%s \n", head->pszName);
-    head = head->pNextNode;
-    printf("%s \n", head->pszName);
-    head = rootNode;
-    printf("%s \n", head->pszName);
-    head = head->pDownNodes;
-    printf("%s \n", head->pszName);
-    head->pDownNodes = fredrikNode;
+    addToNodeNext(head, knutNode);
+    addToNodeDown(head, henrikNode);
+    addToNodeDown(henrikNode, fredrikNode);
 
-    NODE* someNode = lookupNode(tempAllPaths, "Fredrik", rootNode);
-    if(someNode != NULL){
-        printf("Minneadressen til noden er: %s", &someNode);
-    }else{
+    NODE *someNode = lookupNode(tempAllPaths, "Fredrik", rootNode);
+    if (someNode->pszName != rootNode->pszName) {
+        printf("Minneadressen til noden er: %p", someNode);
+    } else {
         printf("Noden finnes ikke.");
     }
 
     for (int i = 0; i < countOfNodes; i++) {
         free(allNodes[i]);
     }
+
     free(allNodes);
     free(allPaths);
     return 0;
@@ -115,7 +113,8 @@ struct NODE *createNode(char *pszName, unsigned long ulIntVal, char *pszString) 
 
 NODE *lookupNode(char **allPaths, char *nodeName, NODE *rootNode) {
     char **parsedPath;
-    NODE *head = malloc(sizeof(NODE));
+    char **parsedOnSpace;
+    NODE *head;
     head = rootNode;
     NODE *temp = rootNode;
     int k = 0;
@@ -123,26 +122,71 @@ NODE *lookupNode(char **allPaths, char *nodeName, NODE *rootNode) {
     while (allPaths[k] != NULL) {
         if (strstr(allPaths[k], nodeName) != NULL) {
             char *path = allPaths[k];
-            printf("%s", path);
+            printf("Path is: %s", path);
 
             parsedPath = parsePathToNode(path, '.');
-            int m = 0;
+
+            int m = 1;
             while (parsedPath[m] != NULL) {
-                printf("%s \n", parsedPath[m]);
-                printf("Navn på head-node: %s \n", head->pszName);
-                if(strcmp(head->pDownNodes, allPaths[m]) != 0){
-                    head = head->pDownNodes;
-                }else if(strcmp(head->pNextNode, allPaths[m]) != 0){
-                    head = head->pNextNode;
+                printf("parsedPath[M] er: %s \n", parsedPath[m]);
+                parsedOnSpace = parsePathToNode(parsedPath[m], ' ');
+
+                int q = 0;
+                while (parsedOnSpace[q] != NULL) {
+                    printf("parsedOnSpace er: %s \n", parsedOnSpace[q]);
+                    printf("Navn på head-node: %s \n", head->pszName);
+
+
+                    NODE *tempDownNode;
+                    tempDownNode = head->pDownNodes;
+                    if (tempDownNode != NULL) {
+                        printf("tempDownNode er: %s \n", tempDownNode->pszName);
+                    }
+                    NODE *tempNextNode;
+                    tempNextNode = head->pNextNode;
+                    if (tempNextNode != NULL) {
+                        printf("tempNextNode er: %s \n", tempNextNode->pszName);
+                    }
+
+                    int whereToMoveHead = 0;
+
+                    if (tempDownNode != NULL) {
+                        if (strcmp(tempDownNode->pszName, parsedOnSpace[q]) == 0) {
+                            whereToMoveHead = 1;
+                        }
+                    }
+
+
+                    if (tempNextNode != NULL) {
+                        if (strcmp(tempNextNode->pszName, parsedOnSpace[q]) == 0) {
+                            whereToMoveHead = 2;
+                        }
+                    }
+
+
+                    if (whereToMoveHead == 1) {
+                        head = tempDownNode;
+                    } else if (whereToMoveHead == 2) {
+                        head = tempNextNode;
+                    }
+
+                    printf("Navn på head-node etter flytt: %s \n", head->pszName);
+
+                    q++;
                 }
+                if (head->pszName == nodeName) {
+                    printf("Endelig navn på head etter lookup: %s \n", head->pszName);
+                    break;
+                }
+
                 m++;
             }
-
-
         }
         k++;
     }
-    return head;
+
+    return
+            head;
 }
 
 char **parsePathToNode(char *path, const char delimiter) {
@@ -179,4 +223,20 @@ char **parsePathToNode(char *path, const char delimiter) {
         *(result + idx) = 0;
     }
     return result;
+}
+
+bool addToNodeDown(NODE *pointNode, NODE *newNode) {
+    pointNode->pDownNodes = newNode;
+    if (pointNode->pDownNodes != NULL) {
+        return true;
+    }
+    return false;
+}
+
+bool addToNodeNext(NODE *pointNode, NODE *newNode) {
+    pointNode->pNextNode = newNode;
+    if (pointNode->pNextNode != NULL) {
+        return true;
+    }
+    return false;
 }
