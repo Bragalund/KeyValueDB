@@ -48,7 +48,7 @@ int main() {
     allPaths[11] = NULL;
 
     char **tempAllPaths = malloc(4 * 256 * sizeof(char));
-    tempAllPaths[0] = "Root.Knut  = \"Ok\"\n";
+    tempAllPaths[0] = "Root.Knut = \"Ok\"\n";
     tempAllPaths[1] = "Root.Henrik = \"Update your software\"\n";
     tempAllPaths[2] = "Root.Henrik.Fredrik = \"Oppdater programvaren\"\n";
 
@@ -79,7 +79,11 @@ int main() {
 
     addToNodeNext(head, knutNode);
     addToNodeDown(head, henrikNode);
-    addToNodeDown(henrikNode, fredrikNode);
+
+    head = lookupNode(tempAllPaths, "Henrik", rootNode);
+    addToNodeDown(head, fredrikNode);
+
+
 
     NODE *someNode = lookupNode(tempAllPaths, "Fredrik", rootNode);
     if (someNode->pszName != rootNode->pszName) {
