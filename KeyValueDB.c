@@ -13,6 +13,8 @@ FILE *openFile(char *filename);
 
 char **parsePathToNode(char *path, const char a_delim);
 
+void addToList(char **allLinesParsedOnPunctuation, int index, char *value);
+
 long getSizeOfFileBySeek(FILE *fr);
 
 bool addToNodeDown(NODE *pointNode, NODE *newNode);
@@ -29,6 +31,8 @@ int main() {
     char *someLine;
     FILE *file;
     char *filename = "db.txt";
+
+    // opens file and exits program if it does not exist
     file = openFile(filename);
     ssize_t sizeOfLine;
     size_t len = 0;
@@ -36,8 +40,10 @@ int main() {
     size_t sizeOfFile;
     char buf[550];
 
+    // finds amount of characters in file
     sizeOfFile = fread(buf, sizeof(*buf), sizeof(buf) / sizeof(*buf), file);
 
+    // puts all chars of buffer into allText
     char *allText = malloc(sizeOfFile * sizeof(char));
     for (int w = 0; w < sizeOfFile; w++) {
         allText[w] = buf[w];
@@ -45,9 +51,55 @@ int main() {
 
     int countOfLines = 12;
     int b = 0;
-    char **allLines;
-    allLines = malloc(256 * sizeof(char));
-    allLines = parsePathToNode(allText, ' ');
+    char **allLinesParsedOnNewLine;
+    char **allLinesParsedOnEqual;
+
+    allLinesParsedOnEqual = malloc(256 * sizeof(char));
+    allLinesParsedOnNewLine = malloc(256 * sizeof(char));
+
+    allLinesParsedOnNewLine = parsePathToNode(allText, '\n');
+
+    int f = 0;
+    while (allLinesParsedOnNewLine[f] != NULL) {
+        char **tempArray;
+        tempArray = parsePathToNode(allLinesParsedOnNewLine[f], '=');
+        int d = 0;
+        while (tempArray[d] != NULL) {
+            addToList(allLinesParsedOnEqual, d, tempArray[d]);
+            printf("allLinesParsedOnEqual er: %s \n",allLinesParsedOnEqual[d]);
+            d++;
+        }
+        f++;
+    }
+
+    int lol = 0;
+    while (allLinesParsedOnEqual[lol] != NULL) {
+        printf("allLinesParsedOnEquals[%d] er: %s \n", lol, allLinesParsedOnEqual[lol]);
+        lol++;
+    }
+
+
+    char **pathsFromFile;
+    char **valuesFromFile;
+
+    pathsFromFile = malloc(256 * sizeof(char));
+    valuesFromFile = malloc(256 * sizeof(char));
+
+    int x = 0;
+    while (allLinesParsedOnEqual[x] != NULL) {
+
+//        pathsFromFile[x / 2] = allLinesParsedOnEqual[x];
+//        valuesFromFile[x / 2] = allLinesParsedOnEqual[x + 1];
+
+        addToList(pathsFromFile, x / 2, allLinesParsedOnEqual[x]);
+        addToList(valuesFromFile, x / 2, allLinesParsedOnEqual[x + 1]);
+
+        printf("pathsFromFile[%d] er: %s \n", x / 2, allLinesParsedOnEqual[x]);
+        printf("valuesFromFile[%d] er: %s \n", x / 2, allLinesParsedOnEqual[x + 1]);
+
+        x = x + 2;
+    }
+
 
     //char **allNodeNames = malloc(12 * 256 * sizeof(char));
     //allNodeNames = parsePathToNode(allText, '.');
@@ -57,12 +109,12 @@ int main() {
 //    while ((sizeOfLine = getline(&someLine, &len, file)) != -1) {
 //        printf("%zu ", sizeOfLine);
 //        printf("someline: %s \n", someLine);
-//        allLines[w] = malloc(sizeOfLine * sizeof(char));
-//        allLines[w] = someLine;
+//        allLinesParsedOnNewLine[w] = malloc(sizeOfLine * sizeof(char));
+//        allLinesParsedOnNewLine[w] = someLine;
 //        w++;
 //    }
 
-    //allLines[w] = NULL;
+    //allLinesParsedOnNewLine[w] = NULL;
 
 
     char *textfile = "strings.no.header = \"Oppdatering\"\n"
@@ -139,7 +191,9 @@ int main() {
     }
 
     fclose(file);
-    //free(allNodeNames);
+    free(valuesFromFile);
+    free(pathsFromFile);
+    free(allLinesParsedOnEqual);
     free(allText);
     free(allNodes);
     free(allPaths);
@@ -301,6 +355,19 @@ FILE *openFile(char *filename) {
         exit(1);
     }
     return NULL;
+}
+
+void addToList(char **allLinesParsedOnPunctuation, int index, char *value) {
+
+    size_t size = strlen(value);
+    char *new_value;
+
+    new_value = malloc(size * sizeof(char));
+
+    if (new_value) {
+        new_value = value;
+        allLinesParsedOnPunctuation[index] = new_value;
+    }
 }
 
 long getSizeOfFileBySeek(FILE *fr) {
