@@ -3,6 +3,4 @@
 
 #include "KeyValueDB.h"
 
-FILE* openFile(char *filename);
-
 #endif //EKSAMENSINNLEVERING_FILEWRITER_H

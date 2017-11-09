@@ -11,34 +11,31 @@ bool isString(char *value) {
     return false;
 }
 
-char **getAllLinesInFile(FILE *file) {
-
-    fseek(file, 0, SEEK_END);
-    long sizeOfFile = ftell(file);
-    fseek(file, 0, SEEK_SET);
-    char** allLines=malloc(sizeOfFile * MAX_CHARS_ON_LINE * sizeof(char));
-    for(int i =0;i<sizeOfFile;i++){
-        allLines[i]=getLine(file, i);
-    }
-    return **allLines;
-}
-
-char *getLine(FILE *file, long *lineNumber) {
-
-    char *line = malloc(MAX_CHARS_ON_LINE * sizeof(char));
-    if (fgets(line, lineNumber, file) != NULL) {
-        return line;
-    } else {
-        printf("Something went wrong in getLine (FileReading.c) \n");
-        exit(1);
-    }
-}
+//char **getAllLinesInFile(FILE *file) {
+//    long sizeOfFile = getSizeOfFileBySeek(file);
+//    char** allLines=malloc(sizeOfFile * MAX_CHARS_ON_LINE * sizeof(char));
+//    for(int i =0;i<sizeOfFile;i++){
+//        allLines[i]=getLine(file, i);
+//    }
+//    return **allLines;
+//}
+//
+//char *getLine(FILE *file, long *lineNumber) {
+//
+//    char *line = malloc(MAX_CHARS_ON_LINE * sizeof(char));
+//    if (fgets(line, lineNumber, file) != NULL) {
+//        return line;
+//    } else {
+//        printf("Something went wrong in getLine (FileReading.c) \n");
+//        exit(1);
+//    }
+//}
 
 
-
-long getSizeOfFileBySeek(FILE *fr, long sizeToBeRemoved) {
-    fseek(fr, 0, SEEK_END);
-    long size = ftell(fr);
-    fseek(fr, 0, SEEK_SET);
-    return size;
-}
+//
+//long getSizeOfFileBySeek(FILE *fr) {
+//    fseek(fr, 0, SEEK_END);
+//    long size = ftell(fr);
+//    fseek(fr, 0, SEEK_SET);
+//    return size;
+//}

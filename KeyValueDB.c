@@ -9,7 +9,11 @@ typedef struct NODE {
     struct _NODE *pDownNodes;
 } NODE;
 
+FILE *openFile(char *filename);
+
 char **parsePathToNode(char *path, const char a_delim);
+
+long getSizeOfFileBySeek(FILE *fr);
 
 bool addToNodeDown(NODE *pointNode, NODE *newNode);
 
@@ -20,6 +24,49 @@ NODE *lookupNode(char **allPaths, char *nodeName, NODE *rootNode);
 struct NODE *createNode(char *pszName, unsigned long ulIntVal, char *pszString);
 
 int main() {
+
+
+    char *someLine;
+    FILE *file;
+    char *filename = "db.txt";
+    file = openFile(filename);
+    ssize_t sizeOfLine;
+    size_t len = 0;
+
+    size_t sizeOfFile;
+    char buf[550];
+
+    sizeOfFile = fread(buf, sizeof(*buf), sizeof(buf) / sizeof(*buf), file);
+
+    char *allText = malloc(sizeOfFile * sizeof(char));
+    for (int w = 0; w < sizeOfFile; w++) {
+        allText[w] = buf[w];
+    }
+
+    int countOfLines = 12;
+    int b =0;
+    char **allLines;
+    while(b< countOfLines){
+        allLines=malloc(256*sizeof(char));
+        allLines = parsePathToNode(allText, '.');
+        b++;
+    }
+
+    //char **allNodeNames = malloc(12 * 256 * sizeof(char));
+    //allNodeNames = parsePathToNode(allText, '.');
+
+
+//    int w = 0;
+//    while ((sizeOfLine = getline(&someLine, &len, file)) != -1) {
+//        printf("%zu ", sizeOfLine);
+//        printf("someline: %s \n", someLine);
+//        allLines[w] = malloc(sizeOfLine * sizeof(char));
+//        allLines[w] = someLine;
+//        w++;
+//    }
+
+    //allLines[w] = NULL;
+
 
     char *textfile = "strings.no.header = \"Oppdatering\"\n"
             "strings.no.text = \"Oppdater programvaren\"\n"
@@ -83,8 +130,6 @@ int main() {
     head = lookupNode(tempAllPaths, "Henrik", rootNode);
     addToNodeDown(head, fredrikNode);
 
-
-
     NODE *someNode = lookupNode(tempAllPaths, "Fredrik", rootNode);
     if (someNode->pszName != rootNode->pszName) {
         printf("Minneadressen til noden er: %p", someNode);
@@ -96,6 +141,9 @@ int main() {
         free(allNodes[i]);
     }
 
+    fclose(file);
+    //free(allNodeNames);
+    free(allText);
     free(allNodes);
     free(allPaths);
     return 0;
@@ -212,7 +260,7 @@ char **parsePathToNode(char *path, const char delimiter) {
     count += last_punctuation < (path + strlen(path) - 1);
     count++;
     result = malloc(sizeof(char *) * count);
-    char tempPath[256];
+    char tempPath[550];
     strcpy(tempPath, path);
     if (result) {
         size_t idx = 0;
@@ -243,4 +291,24 @@ bool addToNodeNext(NODE *pointNode, NODE *newNode) {
         return true;
     }
     return false;
+}
+
+
+FILE *openFile(char *filename) {
+    FILE *file = malloc(256 * 12 * sizeof(FILE));
+    file = fopen(filename, "r");
+    if (file != NULL) {
+        return file;
+    } else {
+        printf("File %s does not exist. \n exiting...\n", filename);
+        exit(1);
+    }
+    return NULL;
+}
+
+long getSizeOfFileBySeek(FILE *fr) {
+    fseek(fr, 0, SEEK_END);
+    long size = ftell(fr);
+    fseek(fr, 0, SEEK_SET);
+    return size;
 }

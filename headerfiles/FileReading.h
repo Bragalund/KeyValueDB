@@ -4,8 +4,7 @@
 #include "KeyValueDB.h"
 
 bool isString(char* value);
-char *getLine(FILE *file, long *lineNumber);
-char **getAllLinesInFile(FILE *file);
-long getSizeOfFileBySeek(FILE *fr, long sizeToBeRemoved);
+//char *getLine(FILE *file, long *lineNumber);
+//char **getAllLinesInFile(FILE *file);
 
 #endif //EKSAMENSINNLEVERING_FILEREADER_H
