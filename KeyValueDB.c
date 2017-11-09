@@ -44,13 +44,10 @@ int main() {
     }
 
     int countOfLines = 12;
-    int b =0;
+    int b = 0;
     char **allLines;
-    while(b< countOfLines){
-        allLines=malloc(256*sizeof(char));
-        allLines = parsePathToNode(allText, '.');
-        b++;
-    }
+    allLines = malloc(256 * sizeof(char));
+    allLines = parsePathToNode(allText, ' ');
 
     //char **allNodeNames = malloc(12 * 256 * sizeof(char));
     //allNodeNames = parsePathToNode(allText, '.');
