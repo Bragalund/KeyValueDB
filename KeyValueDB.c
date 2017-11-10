@@ -11,6 +11,8 @@ typedef struct NODE {
 
 FILE *openFile(char *filename);
 
+void printList(char *listname, char **list);
+
 void freeList(char **stringArray);
 
 char **parsePathToNode(char *path, const char a_delim);
@@ -57,7 +59,7 @@ int main() {
     char **allLinesParsedOnEqual;
 
     allLinesParsedOnEqual = malloc(256 * sizeof(char));
-    allLinesParsedOnNewLine = malloc(256 * sizeof(char));
+    allLinesParsedOnNewLine; // = malloc(256 * sizeof(char));
 
     allLinesParsedOnNewLine = parsePathToNode(allText, '\n');
 
@@ -75,12 +77,6 @@ int main() {
         f++;
     }
 
-    int lol = 0;
-    while (allLinesParsedOnEqual[lol] != NULL) {
-        printf("allLinesParsedOnEquals[%d] er: %s \n", lol, allLinesParsedOnEqual[lol]);
-        lol++;
-    }
-
 
     char **pathsFromFile;
     char **valuesFromFile;
@@ -89,100 +85,117 @@ int main() {
     valuesFromFile = malloc(256 * sizeof(char));
 
     int x = 0;
+    int indexInLists=0;
     while (allLinesParsedOnEqual[x] != NULL) {
 
-//        pathsFromFile[x / 2] = allLinesParsedOnEqual[x];
-//        valuesFromFile[x / 2] = allLinesParsedOnEqual[x + 1];
+        indexInLists = x / 2;
 
-        addToList(pathsFromFile, x / 2, allLinesParsedOnEqual[x]);
-        addToList(valuesFromFile, x / 2, allLinesParsedOnEqual[x + 1]);
+        addToList(pathsFromFile, indexInLists, allLinesParsedOnEqual[x]);
+        addToList(valuesFromFile, indexInLists, allLinesParsedOnEqual[x + 1]);
 
-        printf("pathsFromFile[%d] er: %s \n", x / 2, allLinesParsedOnEqual[x]);
-        printf("valuesFromFile[%d] er: %s \n", x / 2, allLinesParsedOnEqual[x + 1]);
+        //printf("pathsFromFile[%d] er: %s \n", indexInLists, pathsFromFile[indexInLists]);
+        //printf("valuesFromFile[%d] er: %s \n", indexInLists, valuesFromFile[indexInLists]);
 
         x = x + 2;
     }
 
-
-    char *textfile = "strings.no.header = \"Oppdatering\"\n"
-            "strings.no.text = \"Oppdater programvaren\"\n"
-            "strings.no.button_cancel = \"Avbryt\"\n"
-            "string.en.header = \"Updating\"\n"
-            "strings.en.text = \"Update your software\"\n"
-            "strings.en.button_ok = \"Ok\"\n"
-            "strings.en.button_cancel = \"Cancel\"\n"
-            "config.loglevel = 1\n"
-            "config.update.interval = 32\n"
-            "config.update.server1 = \"http://www.aspenberg.no\"\n"
-            "config.update.timeout = 20";
-
-    char **allPaths = malloc(10 * 256 * sizeof(char));
-    allPaths[0] = "strings.no.header = \"Oppdatering\"\n";
-    allPaths[1] = "strings.no.text = \"Oppdater programvaren\"\n";
-    allPaths[2] = "strings.no.button_cancel = \"Avbryt\"\n";
-    allPaths[3] = "string.en.header = \"Updating\"\n";
-    allPaths[4] = "strings.en.text = \"Update your software\"\n";
-    allPaths[5] = "strings.en.button_ok = \"Ok\"\n";
-    allPaths[6] = "strings.en.button_cancel = \"Cancel\"\n";
-    allPaths[7] = "config.loglevel = 1\n";
-    allPaths[8] = "config.update.interval = 32\n";
-    allPaths[9] = "config.update.server1 = \"http://www.aspenberg.no\"\n";
-    allPaths[10] = "config.update.timeout = 20";
-    allPaths[11] = NULL;
-
-    char **tempAllPaths = malloc(4 * 256 * sizeof(char));
-    tempAllPaths[0] = "Root.Knut = \"Ok\"\n";
-    tempAllPaths[1] = "Root.Henrik = \"Update your software\"\n";
-    tempAllPaths[2] = "Root.Henrik.Fredrik = \"Oppdater programvaren\"\n";
+    printList("pathsFromFile", pathsFromFile);
+    printList("valuesFromFile", valuesFromFile);
 
     int countOfNodes = 0;
     struct NODE *head;
+    NODE **allNodes = malloc(20 * sizeof(NODE));
 
     NODE *rootNode = createNode("Root", NULL, NULL);
     countOfNodes++;
+    allNodes[0] = rootNode;
     head = rootNode;
 
-    struct NODE *knutNode;
-    knutNode = createNode("Knut", NULL, "OK");
-    countOfNodes++;
 
-    struct NODE *henrikNode;
-    henrikNode = createNode("Henrik", NULL, "Cancel");
-    countOfNodes++;
 
-    struct NODE *fredrikNode;
-    fredrikNode = createNode("Fredrik", NULL, "Update your software");
-    countOfNodes++;
 
-    NODE **allNodes = malloc(20 * sizeof(NODE));
-    allNodes[0] = rootNode;
-    allNodes[1] = knutNode;
-    allNodes[2] = henrikNode;
-    allNodes[3] = fredrikNode;
 
-    addToNodeNext(head, knutNode);
-    addToNodeDown(head, henrikNode);
+//    char *textfile = "strings.no.header = \"Oppdatering\"\n"
+//            "strings.no.text = \"Oppdater programvaren\"\n"
+//            "strings.no.button_cancel = \"Avbryt\"\n"
+//            "string.en.header = \"Updating\"\n"
+//            "strings.en.text = \"Update your software\"\n"
+//            "strings.en.button_ok = \"Ok\"\n"
+//            "strings.en.button_cancel = \"Cancel\"\n"
+//            "config.loglevel = 1\n"
+//            "config.update.interval = 32\n"
+//            "config.update.server1 = \"http://www.aspenberg.no\"\n"
+//            "config.update.timeout = 20";
+//
+//    char **allPaths = malloc(10 * 256 * sizeof(char));
+//    allPaths[0] = "strings.no.header = \"Oppdatering\"\n";
+//    allPaths[1] = "strings.no.text = \"Oppdater programvaren\"\n";
+//    allPaths[2] = "strings.no.button_cancel = \"Avbryt\"\n";
+//    allPaths[3] = "string.en.header = \"Updating\"\n";
+//    allPaths[4] = "strings.en.text = \"Update your software\"\n";
+//    allPaths[5] = "strings.en.button_ok = \"Ok\"\n";
+//    allPaths[6] = "strings.en.button_cancel = \"Cancel\"\n";
+//    allPaths[7] = "config.loglevel = 1\n";
+//    allPaths[8] = "config.update.interval = 32\n";
+//    allPaths[9] = "config.update.server1 = \"http://www.aspenberg.no\"\n";
+//    allPaths[10] = "config.update.timeout = 20";
+//    allPaths[11] = NULL;
 
-    head = lookupNode(tempAllPaths, "Henrik", rootNode);
-    addToNodeDown(head, fredrikNode);
-
-    NODE *someNode = lookupNode(tempAllPaths, "Fredrik", rootNode);
-    if (someNode->pszName != rootNode->pszName) {
-        printf("Minneadressen til noden er: %p", someNode);
-    } else {
-        printf("Noden finnes ikke.");
-    }
-
-    for (int i = 0; i < countOfNodes; i++) {
-        free(allNodes[i]);
-    }
+//    char **tempAllPaths = malloc(4 * 256 * sizeof(char));
+//    tempAllPaths[0] = "Root.Knut = \"Ok\"\n";
+//    tempAllPaths[1] = "Root.Henrik = \"Update your software\"\n";
+//    tempAllPaths[2] = "Root.Henrik.Fredrik = \"Oppdater programvaren\"\n";
+//
+//    int countOfNodes = 0;
+//    struct NODE *head;
+//
+//    NODE *rootNode = createNode("Root", NULL, NULL);
+//    countOfNodes++;
+//    head = rootNode;
+//
+//    struct NODE *knutNode;
+//    knutNode = createNode("Knut", NULL, "OK");
+//    countOfNodes++;
+//
+//    struct NODE *henrikNode;
+//    henrikNode = createNode("Henrik", NULL, "Cancel");
+//    countOfNodes++;
+//
+//    struct NODE *fredrikNode;
+//    fredrikNode = createNode("Fredrik", NULL, "Update your software");
+//    countOfNodes++;
+//
+//    NODE **allNodes = malloc(20 * sizeof(NODE));
+//    allNodes[0] = rootNode;
+//    allNodes[1] = knutNode;
+//    allNodes[2] = henrikNode;
+//    allNodes[3] = fredrikNode;
+//
+//    addToNodeNext(head, knutNode);
+//    addToNodeDown(head, henrikNode);
+//
+//    head = lookupNode(tempAllPaths, "Henrik", rootNode);
+//    addToNodeDown(head, fredrikNode);
+//
+//    NODE *someNode = lookupNode(tempAllPaths, "Fredrik", rootNode);
+//    if (someNode->pszName != rootNode->pszName) {
+//        printf("Minneadressen til noden er: %p", someNode);
+//    } else {
+//        printf("Noden finnes ikke.");
+//    }
+//    for (int i = 0; i < countOfNodes; i++) {
+//        free(allNodes[i]);
+//    }
 
     fclose(file);
 
     freeList(allLinesParsedOnEqual);
     freeList(allLinesParsedOnNewLine);
-    freeList(tempAllPaths);
-    freeList(allPaths);
+    for (int i = 0; i < countOfNodes; i++) {
+        free(allNodes[i]);
+    }
+    //freeList(tempAllPaths);
+    //freeList(allPaths);
 
     free(valuesFromFile);
     free(pathsFromFile);
@@ -190,14 +203,23 @@ int main() {
     free(allLinesParsedOnEqual);
     free(allText);
     free(allNodes);
-    free(allPaths);
+    //free(allPaths);
     return 0;
+}
+
+void printList(char *listname, char **list) {
+    int lol = 0;
+    while (list[lol] != NULL) {
+        printf("%s[%d] er: %s \n", listname, lol, list[lol]);
+        lol++;
+    }
 }
 
 void freeList(char **stringArray) {
     int index = 0;
     while (stringArray[index] != NULL) {
         free(stringArray[index]);
+        stringArray[index] = NULL;
         index++;
     }
 }
@@ -290,8 +312,7 @@ NODE *lookupNode(char **allPaths, char *nodeName, NODE *rootNode) {
         k++;
     }
 
-    return
-            head;
+    return head;
 }
 
 char **parsePathToNode(char *path, const char delimiter) {
@@ -348,7 +369,7 @@ bool addToNodeNext(NODE *pointNode, NODE *newNode) {
 
 
 FILE *openFile(char *filename) {
-    FILE *file = malloc(256 * 12 * sizeof(FILE));
+    FILE *file;// = malloc(256 * 12 * sizeof(FILE));
     file = fopen(filename, "r");
     if (file != NULL) {
         return file;
