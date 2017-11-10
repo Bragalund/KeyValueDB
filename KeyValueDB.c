@@ -11,6 +11,8 @@ typedef struct NODE {
 
 FILE *openFile(char *filename);
 
+void freeList(char **stringArray);
+
 char **parsePathToNode(char *path, const char a_delim);
 
 void addToList(char **allLinesParsedOnPunctuation, int index, char *value);
@@ -65,8 +67,9 @@ int main() {
         tempArray = parsePathToNode(allLinesParsedOnNewLine[f], '=');
         int d = 0;
         while (tempArray[d] != NULL) {
-            addToList(allLinesParsedOnEqual, d, tempArray[d]);
-            printf("allLinesParsedOnEqual er: %s \n",allLinesParsedOnEqual[d]);
+            addToList(allLinesParsedOnEqual, d + f * 2, tempArray[d]);
+            //printf("tempArray[%d] er %s \n",d,tempArray[d]);
+            //printf("allLinesParsedOnEqual[%d] er: %s \n",f*2+d,allLinesParsedOnEqual[f*2+d]);
             d++;
         }
         f++;
@@ -99,22 +102,6 @@ int main() {
 
         x = x + 2;
     }
-
-
-    //char **allNodeNames = malloc(12 * 256 * sizeof(char));
-    //allNodeNames = parsePathToNode(allText, '.');
-
-
-//    int w = 0;
-//    while ((sizeOfLine = getline(&someLine, &len, file)) != -1) {
-//        printf("%zu ", sizeOfLine);
-//        printf("someline: %s \n", someLine);
-//        allLinesParsedOnNewLine[w] = malloc(sizeOfLine * sizeof(char));
-//        allLinesParsedOnNewLine[w] = someLine;
-//        w++;
-//    }
-
-    //allLinesParsedOnNewLine[w] = NULL;
 
 
     char *textfile = "strings.no.header = \"Oppdatering\"\n"
@@ -191,13 +178,28 @@ int main() {
     }
 
     fclose(file);
+
+    freeList(allLinesParsedOnEqual);
+    freeList(allLinesParsedOnNewLine);
+    freeList(tempAllPaths);
+    freeList(allPaths);
+
     free(valuesFromFile);
     free(pathsFromFile);
+    free(allLinesParsedOnNewLine);
     free(allLinesParsedOnEqual);
     free(allText);
     free(allNodes);
     free(allPaths);
     return 0;
+}
+
+void freeList(char **stringArray) {
+    int index = 0;
+    while (stringArray[index] != NULL) {
+        free(stringArray[index]);
+        index++;
+    }
 }
 
 struct NODE *createNode(char *pszName, unsigned long ulIntVal, char *pszString) {
@@ -357,7 +359,7 @@ FILE *openFile(char *filename) {
     return NULL;
 }
 
-void addToList(char **allLinesParsedOnPunctuation, int index, char *value) {
+void addToList(char **allLinesParsedOnEquals, int index, char *value) {
 
     size_t size = strlen(value);
     char *new_value;
@@ -366,7 +368,7 @@ void addToList(char **allLinesParsedOnPunctuation, int index, char *value) {
 
     if (new_value) {
         new_value = value;
-        allLinesParsedOnPunctuation[index] = new_value;
+        allLinesParsedOnEquals[index] = new_value;
     }
 }
 
