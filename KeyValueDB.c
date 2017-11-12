@@ -320,7 +320,7 @@ NODE **createAllNodes(char **pathsFromFile, char **valuesFromFile, NODE *rootNod
 
                 NODE *tempNode = nodeOnSameLevel(nodeName, rootNode);
                 if (tempNode != NULL) {
-                    printf("Node %s finnes fra før. \n", tempNode->pszName);
+                    //printf("Node %s finnes fra før. \n", tempNode->pszName);
                     head = tempNode;
                 } else {
                     NODE *lastNodeOnSameLevel = getLastNodeOnSameLevel(rootNode);
@@ -339,8 +339,17 @@ NODE **createAllNodes(char **pathsFromFile, char **valuesFromFile, NODE *rootNod
                     subHead = head->pDownNodes;
                 }
                 else{
-                    NODE *tempNewNode = createNode(nodeName, NULL, NULL);
-                    //printf("node down(%s) for %s does not exists \n", tempNewNode->pszName ,head->pszName);
+                    unsigned long someUnsignedLong = NULL;
+                    char* loglevel = "loglevel ";
+                    if(strcmp(nodeName, loglevel) == 0){
+                        someUnsignedLong = atoi(valuesFromFile[counter]);
+                        printf("Node %s has value %lu \n", nodeName, someUnsignedLong);
+                        //someUnsignedLong = malloc(sizeof(unsigned long));
+
+                    }
+
+                    NODE *tempNewNode = createNode(nodeName, someUnsignedLong, NULL);
+                    printf("Creates downNode %s of %s \n", tempNewNode->pszName ,head->pszName);
                     addToNodeDown(head, tempNewNode);
                     allNodes[countOfNodesInAllnodes] = tempNewNode;
                     countOfNodesInAllnodes++;
@@ -348,13 +357,16 @@ NODE **createAllNodes(char **pathsFromFile, char **valuesFromFile, NODE *rootNod
                 }
 
             } else if (levelInPath == 2) {
-                printf("subHead er %s \n", subHead->pszName);
+                //printf("subHead er %s \n", subHead->pszName);
                 if(subHead->pDownNodes !=NULL){
-                    printf("subhead down node was not NULL\n");
+                    //printf("subhead down node was not NULL\n");
                     NODE* subSubNode = subHead->pDownNodes;
                     NODE* someNextNode = nodeOnSameLevel(nodeName, subSubNode);
                     if(someNextNode == NULL){
                         NODE* lastNodeOnSameLevel = getLastNodeOnSameLevel(subSubNode);
+
+                        //if(valuesFromFile[counter]){}
+
                         NODE* newTempNode = createNode(nodeName, NULL, NULL);
                         addToNodeNext(lastNodeOnSameLevel, newTempNode);
                         allNodes[countOfNodesInAllnodes] = newTempNode;
