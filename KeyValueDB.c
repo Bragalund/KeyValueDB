@@ -12,6 +12,8 @@ typedef struct NODE {
 
 FILE *openFile(char *filename);
 
+NODE *getLastNodeOnSameLevel(NODE *pointNode);
+
 bool isDigit(char *someString);
 
 void printList(char *listname, char **list);
@@ -115,8 +117,8 @@ int main() {
 
     NODE **allNodes = createAllNodes(pathsFromFile, valuesFromFile, head);
 
-    int q=0;
-    while(allNodes[q] !=NULL){
+    int q = 0;
+    while (allNodes[q] != NULL) {
         printf("[%d] Nodenavn: %s \n", q, allNodes[q]->pszName);
         q++;
     }
@@ -263,6 +265,38 @@ bool isDigit(char *someString) {
     return isDigit;
 }
 
+NODE *nodeOnSameLevel(char *nodeName, NODE *pointNode) {
+    struct NODE *tempNextNode = pointNode->pNextNode;
+    while (tempNextNode != NULL) {
+        if (strcmp(tempNextNode->pszName, nodeName) == 0) {
+            return tempNextNode;
+        } else {
+            tempNextNode = tempNextNode->pNextNode;
+        }
+    }
+    return NULL;
+}
+
+bool hasValidUnderNode(NODE *pointNode, char *nodeName) {
+    if (pointNode->pDownNodes != NULL) {
+
+        NODE* tempDownNode = pointNode->pDownNodes;
+        if (strcmp(tempDownNode->pszName, nodeName) == 0) {
+            return true;
+        }
+    }
+    return false;
+}
+
+NODE *getLastNodeOnSameLevel(NODE *pointNode) {
+    struct NODE *tempNextNode;
+    tempNextNode = pointNode;
+    while (tempNextNode->pNextNode != NULL) {
+        tempNextNode = tempNextNode->pNextNode;
+    }
+    return tempNextNode;
+}
+
 NODE **createAllNodes(char **pathsFromFile, char **valuesFromFile, NODE *rootNode) {
     struct NODE *head;
     head = rootNode;
@@ -276,59 +310,119 @@ NODE **createAllNodes(char **pathsFromFile, char **valuesFromFile, NODE *rootNod
         char **tempNodeNames;
         tempNodeNames = parsePathToNode(pathsFromFile[counter], '.');
 
-
+        NODE* subHead=NULL;
         // Sjekker om pathen har eksisterende side/under-noder. Flytter head dit.
-        int anotherCounter = 0;
-        while (tempNodeNames[anotherCounter] != NULL) {
+        int levelInPath = 0;
+        while (tempNodeNames[levelInPath] != NULL) {
+            char *nodeName = tempNodeNames[levelInPath];
 
-            NODE *tempDownNode;
-            tempDownNode = head->pDownNodes;
+            if (levelInPath == 0) {
 
-            NODE *tempNextNode;
-            tempNextNode = head->pNextNode;
-
-            if (tempDownNode != NULL) {
-                if (strcmp(tempDownNode->pszName, tempNodeNames[anotherCounter]) == 0) {
-                    head = tempDownNode;
-                    anotherCounter++;
+                NODE *tempNode = nodeOnSameLevel(nodeName, rootNode);
+                if (tempNode != NULL) {
+                    printf("Node %s finnes fra før. \n", tempNode->pszName);
+                    head = tempNode;
+                } else {
+                    NODE *lastNodeOnSameLevel = getLastNodeOnSameLevel(rootNode);
+                    NODE *tempNewNode = createNode(nodeName, NULL, NULL);
+                    head = tempNewNode;
+                    allNodes[countOfNodesInAllnodes] = tempNewNode;
+                    countOfNodesInAllnodes++;
+                    addToNodeNext(lastNodeOnSameLevel, tempNewNode);
+                    printf("created node %s \n", tempNewNode->pszName);
                 }
-            } else if (tempNextNode != NULL) {
-                if (strcmp(tempNextNode->pszName, tempNodeNames[anotherCounter]) == 0) {
-                    head = tempNextNode;
-                    anotherCounter++;
+            } else if (levelInPath == 1) {
+                //printf("head is %s\n", head->pszName);
+                //printf("nodename %s \n", nodeName);
+                if (hasValidUnderNode(head, nodeName)){
+                    //printf("node down for %s exists \n", head->pszName);
+                    subHead = head->pDownNodes;
                 }
-            } else {
+                else{
+                    NODE *tempNewNode = createNode(nodeName, NULL, NULL);
+                    //printf("node down(%s) for %s does not exists \n", tempNewNode->pszName ,head->pszName);
+                    addToNodeDown(head, tempNewNode);
+                    allNodes[countOfNodesInAllnodes] = tempNewNode;
+                    countOfNodesInAllnodes++;
+                    subHead = tempNewNode;
+                }
 
-                // Creates node with name and string/int-value to node
-                if (anotherCounter == 2) {
-
-                    // Adds int value if digits
-                    if (isDigit(valuesFromFile[counter])) {
-                        allNodes[countOfNodesInAllnodes] = createNode(tempNodeNames[anotherCounter],
-                                                                      atoi(valuesFromFile[counter]), NULL);
+            } else if (levelInPath == 2) {
+                printf("subHead er %s \n", subHead->pszName);
+                if(subHead->pDownNodes !=NULL){
+                    printf("subhead down node was not NULL\n");
+                    NODE* subSubNode = subHead->pDownNodes;
+                    NODE* someNextNode = nodeOnSameLevel(nodeName, subSubNode);
+                    if(someNextNode == NULL){
+                        NODE* lastNodeOnSameLevel = getLastNodeOnSameLevel(subSubNode);
+                        NODE* newTempNode = createNode(nodeName, NULL, NULL);
+                        addToNodeNext(lastNodeOnSameLevel, newTempNode);
+                        allNodes[countOfNodesInAllnodes] = newTempNode;
                         countOfNodesInAllnodes++;
+                    }else{
+                        printf("SubSubNode did exist? Strange...\n");
                     }
-                    // Adds String value if not digits
-                    else {
-                        allNodes[countOfNodesInAllnodes] = createNode(tempNodeNames[anotherCounter], NULL, valuesFromFile[counter]);
-                        countOfNodesInAllnodes++;
-                    }
-                }
-                    // Creates node with name
-                else {
-                    allNodes[countOfNodesInAllnodes] = createNode(tempNodeNames[anotherCounter], NULL, NULL);
+                }else{
+                    printf("Down node for %s is NULL \n", subHead->pszName);
+                    NODE *tempNewNode = createNode(nodeName, NULL, NULL);
+                    printf("Created Node: %s \n", tempNewNode->pszName);
+                    addToNodeDown(subHead, tempNewNode);
+                    allNodes[countOfNodesInAllnodes] = tempNewNode;
                     countOfNodesInAllnodes++;
                 }
-                head = allNodes[countOfNodesInAllnodes - 1];
-
             }
-            anotherCounter++;
+
+            levelInPath++;
         }
+        //NODE* tempNode = lookupNode(pathsFromFile, tempNodeNames[levelInPath], head);
+//
+//            if(tempNode != head){
+//                head = tempNode;
+//                levelInPath++;
+//            } else {
+//
+//                // Creates node with name and string/int-value to node
+//                if (levelInPath == 2) {
+//
+//                    // Adds int value if digits
+//                    if (isDigit(valuesFromFile[counter])) {
+//                        allNodes[countOfNodesInAllnodes] = createNode(tempNodeNames[levelInPath],
+//                                                                      atoi(valuesFromFile[counter]), NULL);
+//                        countOfNodesInAllnodes++;
+//                    }
+//                    // Adds String value if not digits
+//                    else {
+//                        allNodes[countOfNodesInAllnodes] = createNode(tempNodeNames[levelInPath], NULL, valuesFromFile[counter]);
+//                        countOfNodesInAllnodes++;
+//                    }
+//                }
+//                    // Creates node with name
+//                else {
+//                    NODE* tempNewNode = createNode(tempNodeNames[levelInPath], NULL, NULL);
+//                    allNodes[countOfNodesInAllnodes] = tempNewNode;
+//
+//                    printf("created node %s \n", allNodes[countOfNodesInAllnodes]->pszName);
+//
+//                    if(levelInPath == 0 && (strcmp(head->pszName, "strings") == 0 || strcmp(head->pszName, "config") == 0)){
+//                        printf("Added node %s next to %s \n",tempNewNode->pszName, allNodes[countOfNodesInAllnodes-1]);
+//                        addToNodeNext(head, allNodes[countOfNodesInAllnodes]);
+//                    }
+//                    else if(levelInPath == 1 && (strcmp(head->pszName, "no") == 0 || strcmp(head->pszName, "en") == 0 || strcmp(head->pszName, "loglevel") == 0 || strcmp(head->pszName, "update") == 0)){
+//                        addToNodeNext(head, allNodes[countOfNodesInAllnodes]);
+//                    }else{
+//                        addToNodeDown(head, allNodes[countOfNodesInAllnodes]);
+//                    }
+//
+//
+//                    countOfNodesInAllnodes++;
+//                }
+//                head = allNodes[countOfNodesInAllnodes -1];
+
         counter++;
     }
     return allNodes;
-
 }
+
 
 NODE *lookupNode(char **allPaths, char *nodeName, NODE *rootNode) {
     char **parsedPath;
@@ -341,31 +435,34 @@ NODE *lookupNode(char **allPaths, char *nodeName, NODE *rootNode) {
     while (allPaths[k] != NULL) {
         if (strstr(allPaths[k], nodeName) != NULL) {
             char *path = allPaths[k];
-            printf("Path is: %s", path);
+            //printf("Path is: %s \n", path);
 
             parsedPath = parsePathToNode(path, '.');
 
             int m = 1;
             while (parsedPath[m] != NULL) {
-                printf("parsedPath[M] er: %s \n", parsedPath[m]);
+                //printf("parsedPath[M] er: %s \n", parsedPath[m]);
                 parsedOnSpace = parsePathToNode(parsedPath[m], ' ');
 
                 int q = 0;
                 while (parsedOnSpace[q] != NULL) {
-                    printf("parsedOnSpace er: %s \n", parsedOnSpace[q]);
-                    printf("Navn på head-node: %s \n", head->pszName);
+                    //printf("parsedOnSpace er: %s \n", parsedOnSpace[q]);
+                    //printf("Navn på head-node: %s \n", head->pszName);
 
 
                     NODE *tempDownNode;
                     tempDownNode = head->pDownNodes;
-                    if (tempDownNode != NULL) {
-                        printf("tempDownNode er: %s \n", tempDownNode->pszName);
-                    }
+
                     NODE *tempNextNode;
                     tempNextNode = head->pNextNode;
-                    if (tempNextNode != NULL) {
-                        printf("tempNextNode er: %s \n", tempNextNode->pszName);
-                    }
+
+//                    if (tempDownNode != NULL) {
+//                        printf("tempDownNode er: %s \n", tempDownNode->pszName);
+//                    }
+
+//                    if (tempNextNode != NULL) {
+//                        printf("tempNextNode er: %s \n", tempNextNode->pszName);
+//                    }
 
                     int whereToMoveHead = 0;
 
@@ -389,8 +486,7 @@ NODE *lookupNode(char **allPaths, char *nodeName, NODE *rootNode) {
                         head = tempNextNode;
                     }
 
-                    printf("Navn på head-node etter flytt: %s \n", head->pszName);
-
+                    //printf("Navn på head-node etter flytt: %s \n", head->pszName);
                     q++;
                 }
                 if (head->pszName == nodeName) {
