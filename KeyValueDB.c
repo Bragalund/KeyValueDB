@@ -1,4 +1,5 @@
 #include <assert.h>
+#include <ctype.h>
 #include "headerfiles/KeyValueDB.h"
 
 typedef struct NODE {
@@ -10,6 +11,8 @@ typedef struct NODE {
 } NODE;
 
 FILE *openFile(char *filename);
+
+bool isDigit(char *someString);
 
 void printList(char *listname, char **list);
 
@@ -26,6 +29,8 @@ bool addToNodeDown(NODE *pointNode, NODE *newNode);
 bool addToNodeNext(NODE *pointNode, NODE *newNode);
 
 NODE *lookupNode(char **allPaths, char *nodeName, NODE *rootNode);
+
+NODE **createAllNodes(char **pathsFromFile, char **valuesFromFile, NODE *rootNode);
 
 struct NODE *createNode(char *pszName, unsigned long ulIntVal, char *pszString);
 
@@ -85,7 +90,7 @@ int main() {
     valuesFromFile = malloc(256 * sizeof(char));
 
     int x = 0;
-    int indexInLists=0;
+    int indexInLists = 0;
     while (allLinesParsedOnEqual[x] != NULL) {
 
         indexInLists = x / 2;
@@ -104,12 +109,19 @@ int main() {
 
     int countOfNodes = 0;
     struct NODE *head;
-    NODE **allNodes = malloc(20 * sizeof(NODE));
-
     NODE *rootNode = createNode("Root", NULL, NULL);
     countOfNodes++;
-    allNodes[0] = rootNode;
     head = rootNode;
+
+    NODE **allNodes = createAllNodes(pathsFromFile, valuesFromFile, head);
+
+    int q=0;
+    while(allNodes[q] !=NULL){
+        printf("[%d] Nodenavn: %s \n", q, allNodes[q]->pszName);
+        q++;
+    }
+
+
 
 
 
@@ -187,15 +199,16 @@ int main() {
 //        free(allNodes[i]);
 //    }
 
+
+
     fclose(file);
 
     freeList(allLinesParsedOnEqual);
     freeList(allLinesParsedOnNewLine);
+
     for (int i = 0; i < countOfNodes; i++) {
         free(allNodes[i]);
     }
-    //freeList(tempAllPaths);
-    //freeList(allPaths);
 
     free(valuesFromFile);
     free(pathsFromFile);
@@ -236,6 +249,85 @@ struct NODE *createNode(char *pszName, unsigned long ulIntVal, char *pszString) 
     pNewNode->pNextNode = NULL;
 
     return pNewNode;
+}
+
+bool isDigit(char *someString) {
+    bool isDigit = true;
+    int length;
+    length = strlen(someString);
+    for (int i = 0; i < length; i++) {
+        if (!isdigit(someString[i])) {
+            isDigit = false;
+        }
+    }
+    return isDigit;
+}
+
+NODE **createAllNodes(char **pathsFromFile, char **valuesFromFile, NODE *rootNode) {
+    struct NODE *head;
+    head = rootNode;
+    int countOfNodesInAllnodes = 1;
+    NODE **allNodes = malloc(sizeof(NODE) * 50);
+    allNodes[0] = head;
+    int counter = 0;
+    while (pathsFromFile[counter] != NULL) {
+
+
+        char **tempNodeNames;
+        tempNodeNames = parsePathToNode(pathsFromFile[counter], '.');
+
+
+        // Sjekker om pathen har eksisterende side/under-noder. Flytter head dit.
+        int anotherCounter = 0;
+        while (tempNodeNames[anotherCounter] != NULL) {
+
+            NODE *tempDownNode;
+            tempDownNode = head->pDownNodes;
+
+            NODE *tempNextNode;
+            tempNextNode = head->pNextNode;
+
+            if (tempDownNode != NULL) {
+                if (strcmp(tempDownNode->pszName, tempNodeNames[anotherCounter]) == 0) {
+                    head = tempDownNode;
+                    anotherCounter++;
+                }
+            } else if (tempNextNode != NULL) {
+                if (strcmp(tempNextNode->pszName, tempNodeNames[anotherCounter]) == 0) {
+                    head = tempNextNode;
+                    anotherCounter++;
+                }
+            } else {
+
+                // Creates node with name and string/int-value to node
+                if (anotherCounter == 2) {
+
+                    // Adds int value if digits
+                    if (isDigit(valuesFromFile[counter])) {
+                        allNodes[countOfNodesInAllnodes] = createNode(tempNodeNames[anotherCounter],
+                                                                      atoi(valuesFromFile[counter]), NULL);
+                        countOfNodesInAllnodes++;
+                    }
+                    // Adds String value if not digits
+                    else {
+                        allNodes[countOfNodesInAllnodes] = createNode(tempNodeNames[anotherCounter], NULL, valuesFromFile[counter]);
+                        countOfNodesInAllnodes++;
+                    }
+                }
+                    // Creates node with name
+                else {
+                    allNodes[countOfNodesInAllnodes] = createNode(tempNodeNames[anotherCounter], NULL, NULL);
+                    countOfNodesInAllnodes++;
+                }
+                head = allNodes[countOfNodesInAllnodes - 1];
+
+            }
+            anotherCounter++;
+        }
+        counter++;
+    }
+    return allNodes;
+
 }
 
 NODE *lookupNode(char **allPaths, char *nodeName, NODE *rootNode) {

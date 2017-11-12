@@ -9,6 +9,8 @@
 /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/KeyValueDB.c
 assert.h
 -
+ctype.h
+-
 headerfiles/KeyValueDB.h
 /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/headerfiles/KeyValueDB.h
 
