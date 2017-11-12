@@ -1,6 +1,6 @@
 TARGET = KeyValueDB
-OBJS =  KeyValueDB.o                   # This is for object-files
-DEPS =  KeyValueDB.h makefile           # This is for header-files
+OBJS =  KeyValueDB.o NodeMethods.o Utils.o         # This is for object-files
+DEPS =  KeyValueDB.h NodeMethods.h Utils.h         # This is for header-files
 
 CFLAGS = -O0
 

@@ -150,6 +150,60 @@ KeyValueDB.c.s:
 	$(MAKE) -f CMakeFiles/EksamensInnlevering.dir/build.make CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.s
 .PHONY : KeyValueDB.c.s
 
+NodeMethods.o: NodeMethods.c.o
+
+.PHONY : NodeMethods.o
+
+# target to build an object file
+NodeMethods.c.o:
+	$(MAKE) -f CMakeFiles/EksamensInnlevering.dir/build.make CMakeFiles/EksamensInnlevering.dir/NodeMethods.c.o
+.PHONY : NodeMethods.c.o
+
+NodeMethods.i: NodeMethods.c.i
+
+.PHONY : NodeMethods.i
+
+# target to preprocess a source file
+NodeMethods.c.i:
+	$(MAKE) -f CMakeFiles/EksamensInnlevering.dir/build.make CMakeFiles/EksamensInnlevering.dir/NodeMethods.c.i
+.PHONY : NodeMethods.c.i
+
+NodeMethods.s: NodeMethods.c.s
+
+.PHONY : NodeMethods.s
+
+# target to generate assembly for a file
+NodeMethods.c.s:
+	$(MAKE) -f CMakeFiles/EksamensInnlevering.dir/build.make CMakeFiles/EksamensInnlevering.dir/NodeMethods.c.s
+.PHONY : NodeMethods.c.s
+
+Utils.o: Utils.c.o
+
+.PHONY : Utils.o
+
+# target to build an object file
+Utils.c.o:
+	$(MAKE) -f CMakeFiles/EksamensInnlevering.dir/build.make CMakeFiles/EksamensInnlevering.dir/Utils.c.o
+.PHONY : Utils.c.o
+
+Utils.i: Utils.c.i
+
+.PHONY : Utils.i
+
+# target to preprocess a source file
+Utils.c.i:
+	$(MAKE) -f CMakeFiles/EksamensInnlevering.dir/build.make CMakeFiles/EksamensInnlevering.dir/Utils.c.i
+.PHONY : Utils.c.i
+
+Utils.s: Utils.c.s
+
+.PHONY : Utils.s
+
+# target to generate assembly for a file
+Utils.c.s:
+	$(MAKE) -f CMakeFiles/EksamensInnlevering.dir/build.make CMakeFiles/EksamensInnlevering.dir/Utils.c.s
+.PHONY : Utils.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -162,6 +216,12 @@ help:
 	@echo "... KeyValueDB.o"
 	@echo "... KeyValueDB.i"
 	@echo "... KeyValueDB.s"
+	@echo "... NodeMethods.o"
+	@echo "... NodeMethods.i"
+	@echo "... NodeMethods.s"
+	@echo "... Utils.o"
+	@echo "... Utils.i"
+	@echo "... Utils.s"
 .PHONY : help
 
 

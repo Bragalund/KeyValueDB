@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.o"
+  "CMakeFiles/EksamensInnlevering.dir/NodeMethods.c.o"
+  "CMakeFiles/EksamensInnlevering.dir/Utils.c.o"
   "EksamensInnlevering.pdb"
   "EksamensInnlevering"
 )

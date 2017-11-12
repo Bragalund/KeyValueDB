@@ -5,6 +5,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/KeyValueDB.c" "/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/cmake-build-debug/CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.o"
+  "/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/NodeMethods.c" "/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/cmake-build-debug/CMakeFiles/EksamensInnlevering.dir/NodeMethods.c.o"
+  "/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/Utils.c" "/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/cmake-build-debug/CMakeFiles/EksamensInnlevering.dir/Utils.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

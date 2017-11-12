@@ -90,6 +90,18 @@
 		<Unit filename="/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/KeyValueDB.h">
 			<Option target="EksamensInnlevering"/>
 		</Unit>
+		<Unit filename="/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/NodeMethods.c">
+			<Option target="EksamensInnlevering"/>
+		</Unit>
+		<Unit filename="/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/NodeMethods.h">
+			<Option target="EksamensInnlevering"/>
+		</Unit>
+		<Unit filename="/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/Utils.c">
+			<Option target="EksamensInnlevering"/>
+		</Unit>
+		<Unit filename="/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/Utils.h">
+			<Option target="EksamensInnlevering"/>
+		</Unit>
 		<Unit filename="/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
