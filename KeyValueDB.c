@@ -120,86 +120,15 @@ int main() {
     int q = 0;
     while (allNodes[q] != NULL) {
         printf("[%d] Nodenavn: %s \n", q, allNodes[q]->pszName);
+        if(allNodes[q]->ulIntVal != NULL){
+            printf("Has value: %lu \n", allNodes[q]->ulIntVal);
+        }
+        else if(allNodes[q]->pszString != NULL){
+            printf("Has value: %s \n", allNodes[q]->pszString);
+        }
         q++;
     }
 
-
-
-
-
-
-
-//    char *textfile = "strings.no.header = \"Oppdatering\"\n"
-//            "strings.no.text = \"Oppdater programvaren\"\n"
-//            "strings.no.button_cancel = \"Avbryt\"\n"
-//            "string.en.header = \"Updating\"\n"
-//            "strings.en.text = \"Update your software\"\n"
-//            "strings.en.button_ok = \"Ok\"\n"
-//            "strings.en.button_cancel = \"Cancel\"\n"
-//            "config.loglevel = 1\n"
-//            "config.update.interval = 32\n"
-//            "config.update.server1 = \"http://www.aspenberg.no\"\n"
-//            "config.update.timeout = 20";
-//
-//    char **allPaths = malloc(10 * 256 * sizeof(char));
-//    allPaths[0] = "strings.no.header = \"Oppdatering\"\n";
-//    allPaths[1] = "strings.no.text = \"Oppdater programvaren\"\n";
-//    allPaths[2] = "strings.no.button_cancel = \"Avbryt\"\n";
-//    allPaths[3] = "string.en.header = \"Updating\"\n";
-//    allPaths[4] = "strings.en.text = \"Update your software\"\n";
-//    allPaths[5] = "strings.en.button_ok = \"Ok\"\n";
-//    allPaths[6] = "strings.en.button_cancel = \"Cancel\"\n";
-//    allPaths[7] = "config.loglevel = 1\n";
-//    allPaths[8] = "config.update.interval = 32\n";
-//    allPaths[9] = "config.update.server1 = \"http://www.aspenberg.no\"\n";
-//    allPaths[10] = "config.update.timeout = 20";
-//    allPaths[11] = NULL;
-
-//    char **tempAllPaths = malloc(4 * 256 * sizeof(char));
-//    tempAllPaths[0] = "Root.Knut = \"Ok\"\n";
-//    tempAllPaths[1] = "Root.Henrik = \"Update your software\"\n";
-//    tempAllPaths[2] = "Root.Henrik.Fredrik = \"Oppdater programvaren\"\n";
-//
-//    int countOfNodes = 0;
-//    struct NODE *head;
-//
-//    NODE *rootNode = createNode("Root", NULL, NULL);
-//    countOfNodes++;
-//    head = rootNode;
-//
-//    struct NODE *knutNode;
-//    knutNode = createNode("Knut", NULL, "OK");
-//    countOfNodes++;
-//
-//    struct NODE *henrikNode;
-//    henrikNode = createNode("Henrik", NULL, "Cancel");
-//    countOfNodes++;
-//
-//    struct NODE *fredrikNode;
-//    fredrikNode = createNode("Fredrik", NULL, "Update your software");
-//    countOfNodes++;
-//
-//    NODE **allNodes = malloc(20 * sizeof(NODE));
-//    allNodes[0] = rootNode;
-//    allNodes[1] = knutNode;
-//    allNodes[2] = henrikNode;
-//    allNodes[3] = fredrikNode;
-//
-//    addToNodeNext(head, knutNode);
-//    addToNodeDown(head, henrikNode);
-//
-//    head = lookupNode(tempAllPaths, "Henrik", rootNode);
-//    addToNodeDown(head, fredrikNode);
-//
-//    NODE *someNode = lookupNode(tempAllPaths, "Fredrik", rootNode);
-//    if (someNode->pszName != rootNode->pszName) {
-//        printf("Minneadressen til noden er: %p", someNode);
-//    } else {
-//        printf("Noden finnes ikke.");
-//    }
-//    for (int i = 0; i < countOfNodes; i++) {
-//        free(allNodes[i]);
-//    }
 
 
 
@@ -365,9 +294,15 @@ NODE **createAllNodes(char **pathsFromFile, char **valuesFromFile, NODE *rootNod
                     if(someNextNode == NULL){
                         NODE* lastNodeOnSameLevel = getLastNodeOnSameLevel(subSubNode);
 
-                        //if(valuesFromFile[counter]){}
+                        char* someString = NULL;
+                        unsigned long someUnsignedLong = NULL;
+                        if(isDigit(valuesFromFile[counter])){
+                            someUnsignedLong = atoi(valuesFromFile[counter]);
+                        }else{
+                            someString = valuesFromFile[counter];
+                        }
 
-                        NODE* newTempNode = createNode(nodeName, NULL, NULL);
+                        NODE* newTempNode = createNode(nodeName, someUnsignedLong, someString);
                         addToNodeNext(lastNodeOnSameLevel, newTempNode);
                         allNodes[countOfNodesInAllnodes] = newTempNode;
                         countOfNodesInAllnodes++;
