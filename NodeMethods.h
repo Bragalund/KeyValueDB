@@ -1,13 +1,9 @@
-//
-// Created by bragalund on 12.11.17.
-//
-
 #ifndef EKSAMENSINNLEVERING_NODEMETHODS_H
 #define EKSAMENSINNLEVERING_NODEMETHODS_H
 
 struct NODE *createNode(char *pszName, unsigned long ulIntVal, char *pszString);
 
-#include "KeyValueDB.h"
+#include "Main.h"
 
 NODE *nodeOnSameLevel(char *nodeName, NODE *pointNode);
 

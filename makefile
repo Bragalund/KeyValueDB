@@ -1,6 +1,6 @@
-TARGET = KeyValueDB
-OBJS =  KeyValueDB.o NodeMethods.o Utils.o         # This is for object-files
-DEPS =  KeyValueDB.h NodeMethods.h Utils.h         # This is for header-files
+TARGET = Main
+OBJS =  Main.o NodeMethods.o Utils.o         # This is for object-files
+DEPS =  Main.h NodeMethods.h Utils.h         # This is for header-files
 
 CFLAGS = -O0
 

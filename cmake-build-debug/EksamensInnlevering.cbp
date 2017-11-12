@@ -84,10 +84,10 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/KeyValueDB.c">
+		<Unit filename="/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/Main.c">
 			<Option target="EksamensInnlevering"/>
 		</Unit>
-		<Unit filename="/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/KeyValueDB.h">
+		<Unit filename="/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/Main.h">
 			<Option target="EksamensInnlevering"/>
 		</Unit>
 		<Unit filename="/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/NodeMethods.c">

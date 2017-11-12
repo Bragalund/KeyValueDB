@@ -1,12 +1,8 @@
-//
-// Created by bragalund on 12.11.17.
-//
-
 #ifndef EKSAMENSINNLEVERING_UTILS_H
 #define EKSAMENSINNLEVERING_UTILS_H
 
 
-#include "KeyValueDB.h"
+#include "Main.h"
 
 void printList(char *listname, char **list);
 

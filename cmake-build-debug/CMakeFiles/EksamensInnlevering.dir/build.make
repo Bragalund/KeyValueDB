@@ -57,28 +57,28 @@ include CMakeFiles/EksamensInnlevering.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/EksamensInnlevering.dir/flags.make
 
-CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.o: CMakeFiles/EksamensInnlevering.dir/flags.make
-CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.o: ../KeyValueDB.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.o   -c /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/KeyValueDB.c
+CMakeFiles/EksamensInnlevering.dir/Main.c.o: CMakeFiles/EksamensInnlevering.dir/flags.make
+CMakeFiles/EksamensInnlevering.dir/Main.c.o: ../Main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/EksamensInnlevering.dir/Main.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/EksamensInnlevering.dir/Main.c.o   -c /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/Main.c
 
-CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/KeyValueDB.c > CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.i
+CMakeFiles/EksamensInnlevering.dir/Main.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/EksamensInnlevering.dir/Main.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/Main.c > CMakeFiles/EksamensInnlevering.dir/Main.c.i
 
-CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/KeyValueDB.c -o CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.s
+CMakeFiles/EksamensInnlevering.dir/Main.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/EksamensInnlevering.dir/Main.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/Main.c -o CMakeFiles/EksamensInnlevering.dir/Main.c.s
 
-CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.o.requires:
+CMakeFiles/EksamensInnlevering.dir/Main.c.o.requires:
 
-.PHONY : CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.o.requires
+.PHONY : CMakeFiles/EksamensInnlevering.dir/Main.c.o.requires
 
-CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.o.provides: CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.o.requires
-	$(MAKE) -f CMakeFiles/EksamensInnlevering.dir/build.make CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.o.provides.build
-.PHONY : CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.o.provides
+CMakeFiles/EksamensInnlevering.dir/Main.c.o.provides: CMakeFiles/EksamensInnlevering.dir/Main.c.o.requires
+	$(MAKE) -f CMakeFiles/EksamensInnlevering.dir/build.make CMakeFiles/EksamensInnlevering.dir/Main.c.o.provides.build
+.PHONY : CMakeFiles/EksamensInnlevering.dir/Main.c.o.provides
 
-CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.o.provides.build: CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.o
+CMakeFiles/EksamensInnlevering.dir/Main.c.o.provides.build: CMakeFiles/EksamensInnlevering.dir/Main.c.o
 
 
 CMakeFiles/EksamensInnlevering.dir/NodeMethods.c.o: CMakeFiles/EksamensInnlevering.dir/flags.make
@@ -131,14 +131,14 @@ CMakeFiles/EksamensInnlevering.dir/Utils.c.o.provides.build: CMakeFiles/Eksamens
 
 # Object files for target EksamensInnlevering
 EksamensInnlevering_OBJECTS = \
-"CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.o" \
+"CMakeFiles/EksamensInnlevering.dir/Main.c.o" \
 "CMakeFiles/EksamensInnlevering.dir/NodeMethods.c.o" \
 "CMakeFiles/EksamensInnlevering.dir/Utils.c.o"
 
 # External object files for target EksamensInnlevering
 EksamensInnlevering_EXTERNAL_OBJECTS =
 
-EksamensInnlevering: CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.o
+EksamensInnlevering: CMakeFiles/EksamensInnlevering.dir/Main.c.o
 EksamensInnlevering: CMakeFiles/EksamensInnlevering.dir/NodeMethods.c.o
 EksamensInnlevering: CMakeFiles/EksamensInnlevering.dir/Utils.c.o
 EksamensInnlevering: CMakeFiles/EksamensInnlevering.dir/build.make
@@ -151,7 +151,7 @@ CMakeFiles/EksamensInnlevering.dir/build: EksamensInnlevering
 
 .PHONY : CMakeFiles/EksamensInnlevering.dir/build
 
-CMakeFiles/EksamensInnlevering.dir/requires: CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.o.requires
+CMakeFiles/EksamensInnlevering.dir/requires: CMakeFiles/EksamensInnlevering.dir/Main.c.o.requires
 CMakeFiles/EksamensInnlevering.dir/requires: CMakeFiles/EksamensInnlevering.dir/NodeMethods.c.o.requires
 CMakeFiles/EksamensInnlevering.dir/requires: CMakeFiles/EksamensInnlevering.dir/Utils.c.o.requires
 

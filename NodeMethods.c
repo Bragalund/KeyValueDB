@@ -1,9 +1,4 @@
-//
-// Created by bragalund on 12.11.17.
-//
-
-
-#include "KeyValueDB.h"
+#include "Main.h"
 #include "NodeMethods.h"
 #include "Utils.h"
 

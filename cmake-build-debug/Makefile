@@ -123,32 +123,32 @@ EksamensInnlevering/fast:
 	$(MAKE) -f CMakeFiles/EksamensInnlevering.dir/build.make CMakeFiles/EksamensInnlevering.dir/build
 .PHONY : EksamensInnlevering/fast
 
-KeyValueDB.o: KeyValueDB.c.o
+Main.o: Main.c.o
 
-.PHONY : KeyValueDB.o
+.PHONY : Main.o
 
 # target to build an object file
-KeyValueDB.c.o:
-	$(MAKE) -f CMakeFiles/EksamensInnlevering.dir/build.make CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.o
-.PHONY : KeyValueDB.c.o
+Main.c.o:
+	$(MAKE) -f CMakeFiles/EksamensInnlevering.dir/build.make CMakeFiles/EksamensInnlevering.dir/Main.c.o
+.PHONY : Main.c.o
 
-KeyValueDB.i: KeyValueDB.c.i
+Main.i: Main.c.i
 
-.PHONY : KeyValueDB.i
+.PHONY : Main.i
 
 # target to preprocess a source file
-KeyValueDB.c.i:
-	$(MAKE) -f CMakeFiles/EksamensInnlevering.dir/build.make CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.i
-.PHONY : KeyValueDB.c.i
+Main.c.i:
+	$(MAKE) -f CMakeFiles/EksamensInnlevering.dir/build.make CMakeFiles/EksamensInnlevering.dir/Main.c.i
+.PHONY : Main.c.i
 
-KeyValueDB.s: KeyValueDB.c.s
+Main.s: Main.c.s
 
-.PHONY : KeyValueDB.s
+.PHONY : Main.s
 
 # target to generate assembly for a file
-KeyValueDB.c.s:
-	$(MAKE) -f CMakeFiles/EksamensInnlevering.dir/build.make CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.s
-.PHONY : KeyValueDB.c.s
+Main.c.s:
+	$(MAKE) -f CMakeFiles/EksamensInnlevering.dir/build.make CMakeFiles/EksamensInnlevering.dir/Main.c.s
+.PHONY : Main.c.s
 
 NodeMethods.o: NodeMethods.c.o
 
@@ -213,9 +213,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... EksamensInnlevering"
-	@echo "... KeyValueDB.o"
-	@echo "... KeyValueDB.i"
-	@echo "... KeyValueDB.s"
+	@echo "... Main.o"
+	@echo "... Main.i"
+	@echo "... Main.s"
 	@echo "... NodeMethods.o"
 	@echo "... NodeMethods.i"
 	@echo "... NodeMethods.s"

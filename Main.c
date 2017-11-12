@@ -1,5 +1,5 @@
 
-#include "KeyValueDB.h"
+#include "Main.h"
 #include "NodeMethods.h"
 #include "Utils.h"
 
@@ -81,7 +81,7 @@ int main() {
     freeList(allLinesParsedOnNewLine);
     freeList(valuesFromFile);
     freeList(pathsFromFile);
-freeAllNodes(allNodes);
+    freeAllNodes(allNodes);
 
 
     free(tempArray);

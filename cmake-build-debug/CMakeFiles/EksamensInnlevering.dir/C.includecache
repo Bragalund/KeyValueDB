@@ -6,15 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/KeyValueDB.c
-KeyValueDB.h
-/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/KeyValueDB.h
+/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/Main.c
+Main.h
+/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/Main.h
 NodeMethods.h
 /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/NodeMethods.h
 Utils.h
 /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/Utils.h
 
-/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/KeyValueDB.h
+/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/Main.h
 string.h
 -
 unistd.h
@@ -33,26 +33,26 @@ stdio.h
 -
 
 /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/NodeMethods.c
-KeyValueDB.h
-/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/KeyValueDB.h
+Main.h
+/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/Main.h
 NodeMethods.h
 /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/NodeMethods.h
 Utils.h
 /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/Utils.h
 
 /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/NodeMethods.h
-KeyValueDB.h
-/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/KeyValueDB.h
+Main.h
+/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/Main.h
 
 /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/Utils.c
-KeyValueDB.h
-/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/KeyValueDB.h
+Main.h
+/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/Main.h
 Utils.h
 /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/Utils.h
 
 /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/Utils.h
-KeyValueDB.h
-/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/KeyValueDB.h
+Main.h
+/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/Main.h
 stdio.h
 -
 
