@@ -1,6 +1,6 @@
 TARGET = KeyValueDB
-OBJS =  KeyValueDB.o sourcefiles/FileWriting.o sourcefiles/FileReading.o                   # This is for object-files
-DEPS =  KeyValueDB.h makefile headerfiles/FileReading.h headerfiles/FileWriting.h headerfiles/Validation.h          # This is for header-files
+OBJS =  KeyValueDB.o                   # This is for object-files
+DEPS =  KeyValueDB.h makefile           # This is for header-files
 
 CFLAGS = -O0
 

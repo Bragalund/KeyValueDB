@@ -81,95 +81,17 @@ CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.o.provides: CMakeFiles/EksamensI
 CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.o.provides.build: CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.o
 
 
-CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileReading.c.o: CMakeFiles/EksamensInnlevering.dir/flags.make
-CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileReading.c.o: ../sourcefiles/FileReading.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileReading.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileReading.c.o   -c /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/sourcefiles/FileReading.c
-
-CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileReading.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileReading.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/sourcefiles/FileReading.c > CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileReading.c.i
-
-CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileReading.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileReading.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/sourcefiles/FileReading.c -o CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileReading.c.s
-
-CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileReading.c.o.requires:
-
-.PHONY : CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileReading.c.o.requires
-
-CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileReading.c.o.provides: CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileReading.c.o.requires
-	$(MAKE) -f CMakeFiles/EksamensInnlevering.dir/build.make CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileReading.c.o.provides.build
-.PHONY : CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileReading.c.o.provides
-
-CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileReading.c.o.provides.build: CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileReading.c.o
-
-
-CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileWriting.c.o: CMakeFiles/EksamensInnlevering.dir/flags.make
-CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileWriting.c.o: ../sourcefiles/FileWriting.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileWriting.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileWriting.c.o   -c /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/sourcefiles/FileWriting.c
-
-CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileWriting.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileWriting.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/sourcefiles/FileWriting.c > CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileWriting.c.i
-
-CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileWriting.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileWriting.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/sourcefiles/FileWriting.c -o CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileWriting.c.s
-
-CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileWriting.c.o.requires:
-
-.PHONY : CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileWriting.c.o.requires
-
-CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileWriting.c.o.provides: CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileWriting.c.o.requires
-	$(MAKE) -f CMakeFiles/EksamensInnlevering.dir/build.make CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileWriting.c.o.provides.build
-.PHONY : CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileWriting.c.o.provides
-
-CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileWriting.c.o.provides.build: CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileWriting.c.o
-
-
-CMakeFiles/EksamensInnlevering.dir/sourcefiles/Validation.c.o: CMakeFiles/EksamensInnlevering.dir/flags.make
-CMakeFiles/EksamensInnlevering.dir/sourcefiles/Validation.c.o: ../sourcefiles/Validation.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/EksamensInnlevering.dir/sourcefiles/Validation.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/EksamensInnlevering.dir/sourcefiles/Validation.c.o   -c /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/sourcefiles/Validation.c
-
-CMakeFiles/EksamensInnlevering.dir/sourcefiles/Validation.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/EksamensInnlevering.dir/sourcefiles/Validation.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/sourcefiles/Validation.c > CMakeFiles/EksamensInnlevering.dir/sourcefiles/Validation.c.i
-
-CMakeFiles/EksamensInnlevering.dir/sourcefiles/Validation.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/EksamensInnlevering.dir/sourcefiles/Validation.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/sourcefiles/Validation.c -o CMakeFiles/EksamensInnlevering.dir/sourcefiles/Validation.c.s
-
-CMakeFiles/EksamensInnlevering.dir/sourcefiles/Validation.c.o.requires:
-
-.PHONY : CMakeFiles/EksamensInnlevering.dir/sourcefiles/Validation.c.o.requires
-
-CMakeFiles/EksamensInnlevering.dir/sourcefiles/Validation.c.o.provides: CMakeFiles/EksamensInnlevering.dir/sourcefiles/Validation.c.o.requires
-	$(MAKE) -f CMakeFiles/EksamensInnlevering.dir/build.make CMakeFiles/EksamensInnlevering.dir/sourcefiles/Validation.c.o.provides.build
-.PHONY : CMakeFiles/EksamensInnlevering.dir/sourcefiles/Validation.c.o.provides
-
-CMakeFiles/EksamensInnlevering.dir/sourcefiles/Validation.c.o.provides.build: CMakeFiles/EksamensInnlevering.dir/sourcefiles/Validation.c.o
-
-
 # Object files for target EksamensInnlevering
 EksamensInnlevering_OBJECTS = \
-"CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.o" \
-"CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileReading.c.o" \
-"CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileWriting.c.o" \
-"CMakeFiles/EksamensInnlevering.dir/sourcefiles/Validation.c.o"
+"CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.o"
 
 # External object files for target EksamensInnlevering
 EksamensInnlevering_EXTERNAL_OBJECTS =
 
 EksamensInnlevering: CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.o
-EksamensInnlevering: CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileReading.c.o
-EksamensInnlevering: CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileWriting.c.o
-EksamensInnlevering: CMakeFiles/EksamensInnlevering.dir/sourcefiles/Validation.c.o
 EksamensInnlevering: CMakeFiles/EksamensInnlevering.dir/build.make
 EksamensInnlevering: CMakeFiles/EksamensInnlevering.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable EksamensInnlevering"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable EksamensInnlevering"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/EksamensInnlevering.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -178,9 +100,6 @@ CMakeFiles/EksamensInnlevering.dir/build: EksamensInnlevering
 .PHONY : CMakeFiles/EksamensInnlevering.dir/build
 
 CMakeFiles/EksamensInnlevering.dir/requires: CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.o.requires
-CMakeFiles/EksamensInnlevering.dir/requires: CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileReading.c.o.requires
-CMakeFiles/EksamensInnlevering.dir/requires: CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileWriting.c.o.requires
-CMakeFiles/EksamensInnlevering.dir/requires: CMakeFiles/EksamensInnlevering.dir/sourcefiles/Validation.c.o.requires
 
 .PHONY : CMakeFiles/EksamensInnlevering.dir/requires
 

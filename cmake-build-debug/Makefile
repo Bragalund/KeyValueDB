@@ -150,87 +150,6 @@ KeyValueDB.c.s:
 	$(MAKE) -f CMakeFiles/EksamensInnlevering.dir/build.make CMakeFiles/EksamensInnlevering.dir/KeyValueDB.c.s
 .PHONY : KeyValueDB.c.s
 
-sourcefiles/FileReading.o: sourcefiles/FileReading.c.o
-
-.PHONY : sourcefiles/FileReading.o
-
-# target to build an object file
-sourcefiles/FileReading.c.o:
-	$(MAKE) -f CMakeFiles/EksamensInnlevering.dir/build.make CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileReading.c.o
-.PHONY : sourcefiles/FileReading.c.o
-
-sourcefiles/FileReading.i: sourcefiles/FileReading.c.i
-
-.PHONY : sourcefiles/FileReading.i
-
-# target to preprocess a source file
-sourcefiles/FileReading.c.i:
-	$(MAKE) -f CMakeFiles/EksamensInnlevering.dir/build.make CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileReading.c.i
-.PHONY : sourcefiles/FileReading.c.i
-
-sourcefiles/FileReading.s: sourcefiles/FileReading.c.s
-
-.PHONY : sourcefiles/FileReading.s
-
-# target to generate assembly for a file
-sourcefiles/FileReading.c.s:
-	$(MAKE) -f CMakeFiles/EksamensInnlevering.dir/build.make CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileReading.c.s
-.PHONY : sourcefiles/FileReading.c.s
-
-sourcefiles/FileWriting.o: sourcefiles/FileWriting.c.o
-
-.PHONY : sourcefiles/FileWriting.o
-
-# target to build an object file
-sourcefiles/FileWriting.c.o:
-	$(MAKE) -f CMakeFiles/EksamensInnlevering.dir/build.make CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileWriting.c.o
-.PHONY : sourcefiles/FileWriting.c.o
-
-sourcefiles/FileWriting.i: sourcefiles/FileWriting.c.i
-
-.PHONY : sourcefiles/FileWriting.i
-
-# target to preprocess a source file
-sourcefiles/FileWriting.c.i:
-	$(MAKE) -f CMakeFiles/EksamensInnlevering.dir/build.make CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileWriting.c.i
-.PHONY : sourcefiles/FileWriting.c.i
-
-sourcefiles/FileWriting.s: sourcefiles/FileWriting.c.s
-
-.PHONY : sourcefiles/FileWriting.s
-
-# target to generate assembly for a file
-sourcefiles/FileWriting.c.s:
-	$(MAKE) -f CMakeFiles/EksamensInnlevering.dir/build.make CMakeFiles/EksamensInnlevering.dir/sourcefiles/FileWriting.c.s
-.PHONY : sourcefiles/FileWriting.c.s
-
-sourcefiles/Validation.o: sourcefiles/Validation.c.o
-
-.PHONY : sourcefiles/Validation.o
-
-# target to build an object file
-sourcefiles/Validation.c.o:
-	$(MAKE) -f CMakeFiles/EksamensInnlevering.dir/build.make CMakeFiles/EksamensInnlevering.dir/sourcefiles/Validation.c.o
-.PHONY : sourcefiles/Validation.c.o
-
-sourcefiles/Validation.i: sourcefiles/Validation.c.i
-
-.PHONY : sourcefiles/Validation.i
-
-# target to preprocess a source file
-sourcefiles/Validation.c.i:
-	$(MAKE) -f CMakeFiles/EksamensInnlevering.dir/build.make CMakeFiles/EksamensInnlevering.dir/sourcefiles/Validation.c.i
-.PHONY : sourcefiles/Validation.c.i
-
-sourcefiles/Validation.s: sourcefiles/Validation.c.s
-
-.PHONY : sourcefiles/Validation.s
-
-# target to generate assembly for a file
-sourcefiles/Validation.c.s:
-	$(MAKE) -f CMakeFiles/EksamensInnlevering.dir/build.make CMakeFiles/EksamensInnlevering.dir/sourcefiles/Validation.c.s
-.PHONY : sourcefiles/Validation.c.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -243,15 +162,6 @@ help:
 	@echo "... KeyValueDB.o"
 	@echo "... KeyValueDB.i"
 	@echo "... KeyValueDB.s"
-	@echo "... sourcefiles/FileReading.o"
-	@echo "... sourcefiles/FileReading.i"
-	@echo "... sourcefiles/FileReading.s"
-	@echo "... sourcefiles/FileWriting.o"
-	@echo "... sourcefiles/FileWriting.i"
-	@echo "... sourcefiles/FileWriting.s"
-	@echo "... sourcefiles/Validation.o"
-	@echo "... sourcefiles/Validation.i"
-	@echo "... sourcefiles/Validation.s"
 .PHONY : help
 
 

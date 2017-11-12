@@ -10,5 +10,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <assert.h>
+#include <ctype.h>
 
 #endif //EKSAMENSINNLEVERING_MAIN_H

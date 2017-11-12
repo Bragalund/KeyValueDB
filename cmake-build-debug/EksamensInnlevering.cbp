@@ -87,25 +87,7 @@
 		<Unit filename="/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/KeyValueDB.c">
 			<Option target="EksamensInnlevering"/>
 		</Unit>
-		<Unit filename="/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/headerfiles/FileReading.h">
-			<Option target="EksamensInnlevering"/>
-		</Unit>
-		<Unit filename="/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/headerfiles/FileWriting.h">
-			<Option target="EksamensInnlevering"/>
-		</Unit>
-		<Unit filename="/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/headerfiles/KeyValueDB.h">
-			<Option target="EksamensInnlevering"/>
-		</Unit>
-		<Unit filename="/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/headerfiles/Validation.h">
-			<Option target="EksamensInnlevering"/>
-		</Unit>
-		<Unit filename="/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/sourcefiles/FileReading.c">
-			<Option target="EksamensInnlevering"/>
-		</Unit>
-		<Unit filename="/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/sourcefiles/FileWriting.c">
-			<Option target="EksamensInnlevering"/>
-		</Unit>
-		<Unit filename="/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/sourcefiles/Validation.c">
+		<Unit filename="/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/KeyValueDB.h">
 			<Option target="EksamensInnlevering"/>
 		</Unit>
 		<Unit filename="/home/bragalund/Documents/C/Innleveringer/EksamensInnlevering/CMakeLists.txt">
